@@ -1,7 +1,7 @@
 /**
  * 
  */
-package stepDefinitions;
+package stepDefinitions2;
 
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ import io.restassured.specification.RequestSpecification;
  * @author DELL
  *
  */
-public class stepDefinition {
+public class stepDefinition2 {
 	
 	private static final String USER_ID = "9b5f49ab-eea9-45f4-9d66-bcf56a531b85";
 	private static final String USERNAME = "TOOLSQA-Test";
@@ -61,24 +61,6 @@ public class stepDefinition {
 		Assert.assertTrue(books.size() > 0);
 
 		bookId = books.get(0).get("isbn");	   
-	}
-    
-	//POST - 201
-	@When("I add a book to my reading list")
-	public void addBookInList() {
-		RestAssured.baseURI = BASE_URL;
-		RequestSpecification request = RestAssured.given();
-		request.header("Authorization", "Bearer " + token)
-		.header("Content-Type", "application/json");
-
-		response = request.body("{ \"userId\": \"" + USER_ID + "\", " +
-				"\"collectionOfIsbns\": [ { \"isbn\": \"" + bookId + "\" } ]}")
-				.post("/BookStore/v1/Books");
-	}
-
-	@Then("The book is added")
-	public void bookIsAdded() {
-		Assert.assertEquals(201, response.getStatusCode());
 	}
 
 	//DELETE - 204

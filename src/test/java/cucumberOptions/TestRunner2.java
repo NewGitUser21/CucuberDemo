@@ -3,9 +3,10 @@
  */
 package cucumberOptions;
 
-//import io.cucumber.junit.CucumberOptions;
-import io.cucumber.testng.CucumberOptions;
-import io.cucumber.testng.AbstractTestNGCucumberTests;
+import org.junit.runner.RunWith;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
 
 /**
  * @author DELL
@@ -14,29 +15,42 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
  * Cucumber & TestNG integration
  * AbstractTestNGCucumberTests – Runs each cucumber scenario found in the features as separated test.
  * 
- * WARNING: Ignoring options provided by io.cucumber.junit.CucumberOptions on cucumberOptions.TestRunner. It is recommend to use separate runner classes for JUnit and TestNG.
- * Jan 25, 2022 10:58:07 PM io.cucumber.core.runtime.FeaturePathFeatureSupplier get
- * WARNING: No features found at classpath:/cucumberOptions
+ * io.cucumber.core.runner.DuplicateStepDefinitionException: 
+ * Duplicate step definitions in stepDefinitions.stepDefinition.removeBookFromList() 
+ * and stepDefinitions.stepDefinition2.removeBookFromList()
  * 
- * So write separate classes for Junit and TestNG unit testing
+ * so added a new package for stepDefinitions2
  * 
+ * For DELETE operation
+ * java.lang.AssertionError: expected:<204> but was:<401>
+ * 204: Success
+ * 401: Unauthorized
+ *
  */
 
+@RunWith(Cucumber.class)
 @CucumberOptions(
-		tags = "",
-		features = "src/test/java/features/Login.feature",
-		glue={"stepDefinitions"}
+		features = "src/test/java/features/End2End_Test2.feature",
+		glue={"stepDefinitions2"},
+		monochrome=true,
+	    plugin={"pretty", "html:target/cucumber-reports/cucumber.html", "json:target/cucumber-reports/cucumber.json"}
 		)
 
-public class TestRunner2 extends AbstractTestNGCucumberTests {
-	
-	
-    //Run As TestNG
+public class TestRunner2 {
+
+	//Run As Junit test
 	//run through command prompt
 	//Get the project path
 	//cd project path
 	//mvn compile
 	//mvn clean install
 	//refresh the project
+	
+	//Because of cucumber.properties file
+	//View your Cucumber Report at:                                            
+	// https://reports.cucumber.io/reports/ee14211e-30b2-45b3-8363-3e279fc13919
+	
+	//mvn clean install
+	//This will all both test suite simultaneously (TestRunner and TestRunner2 classes)
 	
 }

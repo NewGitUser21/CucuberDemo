@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>CucumberE2E</groupId>
-  <artifactId>CucumberTestNGInteg</artifactId>
+  <artifactId>SwaggerRestAssured</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>CucumberTestNGInteg</name>
+  <name>SwaggerRestAssured</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -26,6 +26,14 @@
       <scope>test</scope>
     </dependency>
     
+    <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+    <dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>rest-assured</artifactId>
+    <version>4.5.0</version>
+    <scope>test</scope>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
     <dependency>
     <groupId>io.cucumber</groupId>
@@ -41,34 +49,12 @@
     <scope>test</scope>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-    <dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>7.5</version>
-    <scope>test</scope>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm-deps -->
     <dependency>
     <groupId>io.cucumber</groupId>
-    <artifactId>cucumber-testng</artifactId>
-    <version>7.2.3</version>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-    <dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-java</artifactId>
-    <version>4.1.1</version>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
-    <dependency>
-    <groupId>org.hamcrest</groupId>
-    <artifactId>hamcrest-core</artifactId>
-    <version>2.2</version>
-    <scope>test</scope>
+    <artifactId>cucumber-jvm-deps</artifactId>
+    <version>1.0.6</version>
+    <scope>provided</scope>
     </dependency>
 
   </dependencies>
@@ -85,6 +71,16 @@
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+          <configuration>
+               <source>1.8</source>
+               <target>1.8</target>
+               <encoding>UTF-8</encoding>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
@@ -111,19 +107,7 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
-
-        <plugin>
-         <groupId>org.apache.maven.plugins</groupId>
-         <artifactId>maven-compiler-plugin</artifactId>
-         <version>3.8.1</version>
-         <configuration>
-           <source>11</source>
-           <target>11</target>
-            <encoding>UTF-8</encoding>          
-         </configuration>
-        </plugin>
-
-
+        
         <plugin>
     <groupId>net.masterthought</groupId>
     <artifactId>maven-cucumber-reporting</artifactId>
@@ -136,7 +120,7 @@
                 <goal>generate</goal>
             </goals>
             <configuration>
-                <projectName>CucumberTestNGInteg</projectName>
+                <projectName>SwaggerRestAssured</projectName>
                 <skip>false</skip>
                 <outputDirectory>reports/html-reports</outputDirectory>
                 <inputDirectory>target/cucumber-reports</inputDirectory>
@@ -146,7 +130,7 @@
             </configuration>
         </execution>
     </executions>
-     </plugin>
+</plugin>
 
       </plugins>
     </pluginManagement>

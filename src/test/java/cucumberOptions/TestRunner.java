@@ -14,16 +14,20 @@ import io.cucumber.junit.CucumberOptions;
  * 
  * Cucumber & TestNG integration
  * AbstractTestNGCucumberTests – Runs each cucumber scenario found in the features as separated test.
+ * 
+ * For POST operation
+ * java.lang.AssertionError: expected:<201> but was:<401>
+ * 201: Success
+ * 401: Unauthorized
  *
  */
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		tags = "",
-		features = "src/test/java/features/Login.feature",
+		features = "src/test/java/features/End2End_Test.feature",
 		glue={"stepDefinitions"},
 		monochrome=true,
-		plugin={"pretty", "html:target/cucumber-reports/cucumber.html", "json:target/cucumber-reports/cucumber.json"}
+	    plugin={"pretty", "html:target/cucumber-reports/cucumber.html", "json:target/cucumber-reports/cucumber.json"}
 		)
 
 public class TestRunner {
